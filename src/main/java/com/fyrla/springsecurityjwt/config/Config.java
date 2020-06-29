@@ -1,4 +1,4 @@
-package com.fyrla.springsecurityjwt.protection.config;
+package com.fyrla.springsecurityjwt.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

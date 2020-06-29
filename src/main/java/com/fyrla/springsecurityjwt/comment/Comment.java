@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.time.LocalDateTime;
 
 /**
  * @author Krzysztof
@@ -24,5 +25,7 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long id;
+    private Long postId;
     private String content;
+    private LocalDateTime created;
 }

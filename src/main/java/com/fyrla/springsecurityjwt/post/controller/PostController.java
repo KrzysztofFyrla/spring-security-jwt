@@ -7,6 +7,7 @@ import com.fyrla.springsecurityjwt.post.model.Post;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.stereotype.Repository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,6 +35,14 @@ public class PostController {
     @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
     public Optional<Post> getSinglePost(Long id) {
         return postService.getSinglePost(id);
+    }
+
+    @GetMapping("/api/posts/comments")
+    @PreAuthorize("hasRole('USER') or hasRole('ADMIN')")
+    public List<Post> getPostWitchComment(@RequestParam(required = false) Integer page, Sort.Direction sort) {
+        int pageNumber = page != null && page >= 0 ? page : 0;
+        Sort.Direction sortDirection = sort != null ? sort : Sort.Direction.ASC;
+        return postService.getPostWitchComment(pageNumber, sortDirection);
     }
 
     @PostMapping("/api/posts")
